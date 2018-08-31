@@ -4,14 +4,20 @@ import AboutPage from './components/about/AboutPage';
 import HomePage from './components/home/HomePage';
 import Header from './components/common/header';
 import CoursesPage from './components/course/coursesPage';
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';
+
+const store = configureStore();
 
 export default (
-  <Router>
-    <div>
-      <Header />
-      <Route exact path="/" component={HomePage} />
-      <Route path="/courses" component={CoursesPage} />
-      <Route path="/about" component={AboutPage} />
-    </div>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Header />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/courses" component={CoursesPage} />
+        <Route path="/about" component={AboutPage} />
+      </div>
+    </Router>
+  </Provider>
 );
